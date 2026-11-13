@@ -188,24 +188,24 @@ Visit:
 http://127.0.0.1:5000
 ```
 
+
 ## Application Screenshots
 
-Screenshots of the application will be added below.
-
 ### Dashboard
-![Dashboard](screenshot/dashboard.png)
+![Dashboard](screenshot/crime-dashboard.png.png)
 
 ### Data Overview
-![Data Overview](screenshot/data-overview.png)
+![Data Overview](screenshot/data-preparation.png.png)
 
 ### Data Visualisation
 ![Data Visualisation](screenshot/visualization.png)
 
 ### Machine Learning Results
-![Machine Learning](screenshot/ml-results.png)
+![Machine Learning Results](screenshot/ml-results.png)
 
 ### Prediction
 ![Crime Prediction](screenshot/prediction.png)
+
 
 ## Future Improvements
 
