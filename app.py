@@ -101,13 +101,18 @@ if database_url:
             'postgres://', 'postgresql://', 1
         )
 
-    if database_url.startswith('postgresql://'):
+    if database_url.startswith('postgresql+psycopg://'):
         database_url = database_url.replace(
-            'postgresql://', 'postgresql+psycopg2://', 1
+            'postgresql+psycopg://',
+            'postgresql+psycopg2://', 1
+        )
+    elif database_url.startswith('postgresql://'):
+        database_url = database_url.replace(
+            'postgresql://',
+            'postgresql+psycopg2://', 1
         )
 
     app.config['SQLALCHEMY_DATABASE_URI'] = database_url
-
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
