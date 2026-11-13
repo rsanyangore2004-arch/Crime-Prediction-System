@@ -87,7 +87,7 @@ target_column = None
 
 
 # Config
-app.config['SECRET_KEY'] = 'secret123'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'development-key')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
 db = SQLAlchemy(app)
@@ -1545,9 +1545,9 @@ def crime_dashboard():
 # RUN APP
 # =============================
 
+with app.app_context():
+    db.create_all()
+
+
 if __name__ == "__main__":
-
-    with app.app_context():
-        db.create_all()
-
     app.run(debug=True)
