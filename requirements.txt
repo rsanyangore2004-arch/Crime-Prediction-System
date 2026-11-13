@@ -1,4 +1,3 @@
-
 Flask
 Flask-SQLAlchemy
 pandas
@@ -7,3 +6,4 @@ scikit-learn
 matplotlib
 seaborn
 gunicorn
+psycopg2-binary

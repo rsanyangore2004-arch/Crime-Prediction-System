@@ -86,11 +86,28 @@ feature_columns = None
 target_column = None
 
 
+
 # Config
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'development-key')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SECRET_KEY'] = os.environ.get(
+    'SECRET_KEY', 'development-key'
+)
+
+# Database configuration
+database_url = os.environ.get('DATABASE_URL')
+
+if database_url:
+    database_url = database_url.replace(
+        'postgres://', 'postgresql://', 1
+    )
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+else:
+    # Use SQLite when running locally
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
+
 
 # Ensure uploads folder exists
 if not os.path.exists("uploads"):
