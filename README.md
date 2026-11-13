@@ -229,23 +229,27 @@ Through this project, practical experience was gained in:
 
 The following screenshots demonstrate the main features and functionality of the Crime Prediction System.
 
+---
+
+## Application Screenshots
+
 ### 1. Login Page
-[![Login Page](screenshot/login.png)](screenshot/login.png)
+[![Login Page](screenshot/login.png.png)](screenshot/login.png.png)
 
 ### 2. Main Dashboard
 [![Main Dashboard](screenshot/main-dashboard.png)](screenshot/main-dashboard.png)
 
 ### 3. Crime Dashboard
-[![Crime Dashboard](screenshot/crime-dashboard.png)](screenshot/crime-dashboard.png)
+[![Crime Dashboard](screenshot/crime-dashboard.png.png)](screenshot/crime-dashboard.png.png)
 
 ### 4. Data Visualisation
-[![Data Visualisation](screenshot/vizualisation.png)](screenshot/vizualisation.png)
+[![Data Visualisation](screenshot/visualization.png.png)](screenshot/visualization.png.png)
 
 ### 5. Data Preparation
-[![Data Preparation](screenshot/data-preparation.png)](screenshot/data-preparation.png)
+[![Data Preparation](screenshot/data-preparation.png.png)](screenshot/data-preparation.png.png)
 
 ### 6. Model Recommendation
-[![Model Recommendation](screenshot/model-recommendation.png)](screenshot/model-recommendation.png)
+[![Model Recommendation](screenshot/model-recommendation.png.png)](screenshot/model-recommendation.png.png)
 
 ### 7. Crime Prediction
-[![Crime Prediction](screenshot/prediction.png)](screenshot/prediction.png)
+[![Crime Prediction](screenshot/prediction.png.png)](screenshot/prediction.png.png)
