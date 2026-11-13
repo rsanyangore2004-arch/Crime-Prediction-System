@@ -130,8 +130,6 @@ Ensure you have installed:
 
 ### 1. Clone the Repository
 
-Open your terminal and run:
-
 ```bash
 git clone https://github.com/rsanyangore2004-arch/Crime-Prediction-System.git
 ```
@@ -158,16 +156,8 @@ For Windows PowerShell:
 
 ### 5. Install Dependencies
 
-If a `requirements.txt` file is available:
-
 ```bash
 pip install -r requirements.txt
-```
-
-Alternatively, install the main dependencies:
-
-```bash
-pip install flask flask-sqlalchemy pandas numpy scikit-learn matplotlib seaborn
 ```
 
 ### 6. Run the Application
@@ -180,9 +170,7 @@ python app.py
 
 Open your browser and navigate to:
 
-```text
 http://127.0.0.1:5000/
-```
 
 The application should now be running locally.
 
@@ -224,16 +212,44 @@ Through this project, practical experience was gained in:
 
 ## Project Information
 
-**Project Name:** Crime Prediction System
-
-**Project Type:** Final-Year Academic Project
-
-**Development Approach:** Collaborative Development (Pair Project)
-
-**Repository:** [Crime-Prediction-System](https://github.com/rsanyangore2004-arch/Crime-Prediction-System)
-
-**Developer:** Rhoda Sanyangore
+- **Project Name:** Crime Prediction System
+- **Project Type:** Final-Year Academic Project
+- **Development Approach:** Collaborative Development (Pair Project)
+- **Repository:** [Crime-Prediction-System](https://github.com/rsanyangore2004-arch/Crime-Prediction-System)
+- **Developer:** Rhoda Sanyangore
 
 ---
 
 *This project was developed for academic and learning purposes. Its predictions are intended to support analytical exploration and should not be used as the sole basis for policing, criminal investigations or decisions affecting individuals.*
+
+---
+
+## Application Screenshots
+
+### 1. Login Page
+
+![Login Page](screenshot/login.png)
+
+### 2. Main Dashboard
+
+![Main Dashboard](screenshot/main-dashboard.png)
+
+### 3. Crime Dashboard
+
+![Crime Dashboard](screenshot/crime-dashboard.png)
+
+### 4. Data Visualisation
+
+![Data Visualisation](screenshot/vizualisation.png)
+
+### 5. Data Preparation
+
+![Data Preparation](screenshot/data-preparation.png)
+
+### 6. Model Recommendation
+
+![Model Recommendation](screenshot/model-recommendation.png)
+
+### 7. Crime Prediction
+
+![Crime Prediction](screenshot/prediction.png)
