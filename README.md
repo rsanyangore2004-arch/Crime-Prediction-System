@@ -1,255 +1,231 @@
-# Crime Prediction System
-### Machine Learning-Based Crime Pattern Analysis and Prediction
+# Crime Prediction and Analysis System
+
+An interactive, machine learning-powered web application designed to analyse crime data, identify crime patterns and generate predictive insights.
 
 ## Project Overview
 
-The **Crime Prediction System** is a web-based machine learning application developed to analyse historical crime data, identify crime patterns and support data-driven insights.
+The Crime Prediction and Analysis System is a data science project developed using Python and Flask. It provides an interactive platform for exploring crime datasets, performing data preprocessing, visualising crime trends and applying machine learning algorithms to predict crime-related outcomes.
 
-The system allows users to upload crime datasets, explore and preprocess data, generate visualisations, analyse crime trends, train machine learning models and make predictions.
-
-The application was developed using Python and Flask, with machine learning algorithms from Scikit-learn and data analysis libraries to support the end-to-end analytics process.
+The project demonstrates the practical application of data analytics, data preprocessing, machine learning and web development in analysing crime patterns.
 
 ## Project Objectives
 
-- Analyse historical crime data to identify patterns and trends.
-- Provide interactive data exploration and visualisation capabilities.
-- Perform data cleaning and preprocessing.
-- Apply machine learning techniques to crime-related datasets.
-- Compare multiple predictive models based on their performance.
-- Generate predictions and identify important features influencing model outcomes.
+- Analyse historical crime data and identify patterns and trends.
+- Provide interactive data exploration and visualisation.
+- Perform data cleaning and feature engineering.
+- Apply machine learning algorithms to crime-related datasets.
+- Compare model performance and identify suitable predictive models.
+- Generate predictions using trained machine learning models.
 
 ## Key Features
 
 ### 1. User Authentication
 - User registration and login.
-- Forgot password functionality.
-- Password management.
+- Password recovery functionality.
+- Secure access to the application.
 
 ### 2. Data Management
 - Upload crime datasets.
 - View original datasets.
-- Explore dataset structure and contents.
-- Display dataset shape, information, data types and descriptive statistics.
+- Explore dataset structure, dimensions and data types.
+- Examine missing values and descriptive statistics.
 
-### 3. Data Preparation
+### 3. Data Preprocessing
 - Manual data cleaning.
-- Automatic handling of missing values.
-- Duplicate record removal.
+- Automated handling of missing values.
+- Duplicate removal.
 - Feature engineering.
 - Feature scaling using StandardScaler and MinMaxScaler.
 - Feature selection.
 
-### 4. Exploratory Data Analysis (EDA)
-- Generate data visualisations.
-- Explore crime distributions and patterns.
-- Analyse crime trends across different years, districts and crime categories.
-- Identify relationships between relevant variables.
+### 4. Exploratory Data Analysis
+- Interactive data visualisations.
+- Crime trend analysis.
+- Statistical summaries.
+- Graphical exploration of crime patterns.
 
 ### 5. Machine Learning
-- Recommend suitable machine learning models based on the prediction task.
-- Train and compare multiple classification and regression algorithms.
-- Evaluate model performance.
-- Identify important predictive features.
+The application supports multiple machine learning algorithms.
 
-### 6. Crime Prediction
-- Generate predictions using trained machine learning models.
-- Explore the influence of selected input features on prediction outcomes.
+**Classification Models**
+- Logistic Regression
+- Decision Tree Classifier
+- Random Forest Classifier
+- K-Nearest Neighbours (KNN)
+
+**Regression Models**
+- Linear Regression
+- Random Forest Regressor
+- Decision Tree Regressor
+- KNN Regressor
+
+### 6. Model Recommendation and Evaluation
+- Model recommendations based on dataset characteristics.
+- Comparison of machine learning algorithms.
+- Evaluation of model performance.
+- Identification of important predictive features.
+
+### 7. Crime Prediction
+- Train predictive models.
+- Generate predictions using selected models.
+- Explore feature importance.
 
 ## Technologies Used
 
 | Category | Technologies |
 |---|---|
-| Programming Language | Python |
-| Web Framework | Flask |
-| Frontend | HTML, CSS |
+| Programming | Python |
+| Backend | Flask |
+| Frontend | HTML, CSS, JavaScript |
 | Data Analysis | Pandas, NumPy |
 | Machine Learning | Scikit-learn |
-| Data Visualisation | Matplotlib, Seaborn |
-| Database | SQLite |
-| Development Environment | Visual Studio Code |
-| Version Control | Git and GitHub |
+| Visualisation | Matplotlib, Seaborn |
+| Database | SQLite, Flask-SQLAlchemy |
+| Development Tools | Visual Studio Code, Git, GitHub |
 
-## Machine Learning Models
+## Machine Learning Results
 
-The system supports the following algorithms:
+The following are the model accuracy results obtained during project evaluation.
 
-### Classification Models
-- Logistic Regression
-- Decision Tree Classifier
-- Random Forest Classifier
-- K-Nearest Neighbors (KNN) Classifier
-
-### Regression Models
-- Linear Regression
-- Decision Tree Regressor
-- Random Forest Regressor
-- K-Nearest Neighbors (KNN) Regressor
-
-## Model Performance
-
-The following classification accuracy results were obtained during project testing:
-
-| Machine Learning Model | Accuracy |
+| Model | Accuracy |
 |---|---:|
 | Logistic Regression | 87.4% |
 | Decision Tree | 94.8% |
-| Random Forest | **97.6%** |
-| K-Nearest Neighbors | 91.3% |
+| Random Forest | 97.6% |
+| KNN | 91.3% |
 
-### Key Findings
+**Best-performing model:** Random Forest with 97.6% accuracy.
 
-- Random Forest achieved the highest reported classification accuracy of **97.6%**.
-- Decision Tree achieved the second-highest accuracy of 94.8%.
-- Logistic Regression and KNN also demonstrated predictive capabilities.
-- District, Crime Type/Category and Year were identified as important features in the analysis.
+*Note: These are the observed results from the project evaluation. Performance may vary depending on dataset preparation, features and train-test splitting.*
 
-*Note: These are project testing results and may vary depending on the dataset, preprocessing steps and evaluation configuration. Accuracy figures should be interpreted in the context of the test data and class distribution.*
+## Important Features Identified
 
-## Project Architecture
+The analysis highlighted the importance of features such as:
 
-The application consists of the following main components:
+- District
+- Crime Type / Crime Category
+- Year
 
-1. **User Interface:** Provides an interactive interface for users to access the application's functionality.
-2. **Flask Backend:** Handles application routing, user requests and system operations.
-3. **Data Processing Engine:** Performs dataset loading, cleaning and transformation.
-4. **Machine Learning Engine:** Trains and evaluates predictive models.
-5. **Visualisation Engine:** Generates graphical representations of crime patterns and trends.
-6. **Prediction Module:** Uses trained models to generate predictions.
+These features contributed to understanding geographical and temporal crime patterns.
+
+## Project Structure
+
+```text
+Crime-Prediction-System/
+│
+├── app.py
+├── requirements.txt
+├── README.md
+├── IndiaCrime.csv
+│
+├── templates/
+│   ├── dashboard.html
+│   ├── overview.html
+│   ├── prediction.html
+│   └── ...
+│
+├── static/
+│   ├── css/
+│   ├── js/
+│   └── images/
+│
+├── models/
+├── screenshot/
+└── uploads/
+```
 
 ## Installation and Setup
 
-Follow these instructions to run the project locally.
-
 ### Prerequisites
 
-Ensure you have installed:
-
-- Python 3.x
+- Python 3.10 or later
 - Git
-- Visual Studio Code
+- Visual Studio Code (recommended)
 
-### 1. Clone the Repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/rsanyangore2004-arch/Crime-Prediction-System.git
 ```
 
-### 2. Navigate to the Project Directory
+### 2. Navigate to the project directory
 
 ```bash
 cd Crime-Prediction-System
 ```
 
-### 3. Create a Virtual Environment
+### 3. Create a virtual environment
 
 ```bash
 python -m venv venv
 ```
 
-### 4. Activate the Virtual Environment
+### 4. Activate the virtual environment
 
 For Windows PowerShell:
 
 ```powershell
-.\venv\Scripts\Activate.ps1
+.\venv\Scripts\Activate
 ```
 
-### 5. Install Dependencies
+### 5. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 6. Run the Application
+### 6. Run the application
 
 ```bash
 python app.py
 ```
 
-### 7. Open the Application
+### 7. Open the application
 
-Open your browser and navigate to:
+Visit:
 
-http://127.0.0.1:5000/
+```text
+http://127.0.0.1:5000
+```
 
-The application should now be running locally.
+## Application Screenshots
 
-## Dataset
+Screenshots of the application will be added below.
 
-The project uses historical crime data for analysis and predictive modelling.
+### Dashboard
+![Dashboard](screenshot/dashboard.png)
 
-The dataset is used to explore crime patterns across relevant dimensions, including:
+### Data Overview
+![Data Overview](screenshot/data-overview.png)
 
-- District
-- Crime Type / Category
-- Year
+### Data Visualisation
+![Data Visualisation](screenshot/visualization.png)
 
-Dataset availability and usage are subject to the applicable source and licensing conditions.
+### Machine Learning Results
+![Machine Learning](screenshot/ml-results.png)
 
-## Future Enhancements
+### Prediction
+![Crime Prediction](screenshot/prediction.png)
 
-Potential improvements include:
+## Future Improvements
 
-- Integration of additional crime datasets from different regions.
-- Advanced time-series crime forecasting.
-- Interactive geographical crime maps.
-- Improved model optimisation and hyperparameter tuning.
-- More comprehensive model evaluation and validation.
-- Deployment to a cloud hosting platform.
-
-## Learning Outcomes
-
-Through this project, practical experience was gained in:
-
-- Data cleaning and preprocessing.
-- Exploratory data analysis.
-- Feature engineering and feature selection.
-- Machine learning model development.
-- Predictive analytics and model evaluation.
-- Flask web application development.
-- Integrating machine learning models into a web application.
-- Version control and project management using Git and GitHub.
+- Deploy the application to a cloud hosting platform.
+- Integrate larger and more diverse crime datasets.
+- Improve predictive performance through hyperparameter tuning.
+- Introduce interactive geographical crime maps.
+- Develop advanced forecasting capabilities.
+- Enhance dashboard interactivity and reporting.
 
 ## Project Information
 
-- **Project Name:** Crime Prediction System
-- **Project Type:** Final-Year Academic Project
-- **Development Approach:** Collaborative Development (Pair Project)
-- **Repository:** [Crime-Prediction-System](https://github.com/rsanyangore2004-arch/Crime-Prediction-System)
-- **Developer:** Rhoda Sanyangore
+**Project:** Crime Prediction and Analysis System
+
+**Domain:** Data Science | Machine Learning | Predictive Analytics
+
+**Developed using:** Python, Flask and Scikit-learn
+
+**Repository:** [Crime Prediction System on GitHub](https://github.com/rsanyangore2004-arch/Crime-Prediction-System)
 
 ---
 
-*This project was developed for academic and learning purposes. Its predictions are intended to support analytical exploration and should not be used as the sole basis for policing, criminal investigations or decisions affecting individuals.*
-
-
----
-
-## Application Screenshots
-
-The following screenshots demonstrate the main features and functionality of the Crime Prediction System.
-
----
-
-## Application Screenshots
-
-### 1. Login Page
-[![Login Page](screenshot/login.png.png)](screenshot/login.png.png)
-
-### 2. Main Dashboard
-[![Main Dashboard](screenshot/main-dashboard.png)](screenshot/main-dashboard.png)
-
-### 3. Crime Dashboard
-[![Crime Dashboard](screenshot/crime-dashboard.png.png)](screenshot/crime-dashboard.png.png)
-
-### 4. Data Visualisation
-[![Data Visualisation](screenshot/visualization.png.png)](screenshot/visualization.png.png)
-
-### 5. Data Preparation
-[![Data Preparation](screenshot/data-preparation.png.png)](screenshot/data-preparation.png.png)
-
-### 6. Model Recommendation
-[![Model Recommendation](screenshot/model-recommendation.png.png)](screenshot/model-recommendation.png.png)
-
-### 7. Crime Prediction
-[![Crime Prediction](screenshot/prediction.png.png)](screenshot/prediction.png.png)
+*This project demonstrates the practical use of data science and machine learning to explore crime patterns and generate predictive insights.*
