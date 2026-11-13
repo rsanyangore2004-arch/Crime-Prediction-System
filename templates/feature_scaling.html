@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Feature Scaling</h2>
+
+<form method="POST">
+
+<div class="mb-3">
+
+<label>Select Scaling Method</label>
+
+<select name="method" class="form-control">
+
+<option value="standard">Standard Scaling</option>
+<option value="minmax">Min-Max Scaling</option>
+
+</select>
+
+</div>
+
+<button class="btn btn-primary">
+Apply Scaling
+</button>
+
+</form>
+
+<br>
+
+{% if message %}
+
+<div class="alert alert-success">
+{{message}}
+</div>
+
+{% endif %}
+
+<h4>Dataset Preview</h4>
+
+<div class="table-responsive">
+{{preview | safe}}
+</div>
+
+{% endblock %}

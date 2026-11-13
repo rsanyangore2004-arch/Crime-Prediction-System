@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Feature Engineering</h2>
+
+{% if message %}
+
+<div class="alert alert-success">
+{{ message }}
+</div>
+
+{% endif %}
+
+<!-- REMOVE DUPLICATES -->
+
+<h4>Remove Duplicate Rows</h4>
+
+<form method="POST">
+
+<input type="hidden" name="action" value="remove_duplicates">
+
+<button class="btn btn-danger">
+Remove Duplicates
+</button>
+
+</form>
+
+<hr>
+
+<!-- ENCODE COLUMN -->
+
+<h4>Encode Categorical Column</h4>
+
+<form method="POST">
+
+<input type="hidden" name="action" value="encode">
+
+<div class="mb-3">
+
+<label>Select Column</label>
+
+<select name="column" class="form-control">
+
+{% for col in columns %}
+<option value="{{col}}">{{col}}</option>
+{% endfor %}
+
+</select>
+
+</div>
+
+<button class="btn btn-primary">
+Encode Column
+</button>
+
+</form>
+
+<hr>
+
+<!-- CREATE NEW FEATURE -->
+
+<h4>Create New Feature (Add Columns)</h4>
+
+<form method="POST">
+
+<input type="hidden" name="action" value="create_feature">
+
+<div class="mb-3">
+
+<label>Column 1</label>
+
+<select name="col1" class="form-control">
+
+{% for col in columns %}
+<option value="{{col}}">{{col}}</option>
+{% endfor %}
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label>Column 2</label>
+
+<select name="col2" class="form-control">
+
+{% for col in columns %}
+<option value="{{col}}">{{col}}</option>
+{% endfor %}
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label>New Feature Name</label>
+
+<input type="text" name="new_name" class="form-control" required>
+
+</div>
+
+<button class="btn btn-success">
+Create Feature
+</button>
+
+</form>
+
+<hr>
+
+<h4>Dataset Preview</h4>
+
+<div class="table-responsive">
+
+{{ preview | safe }}
+
+</div>
+
+{% endblock %}

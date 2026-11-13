@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-success text-white text-center py-4">
+            <h2 class="mb-0">
+                Feature Importance Analysis
+                {% if target %}
+                    <small class="d-block mt-2 fs-5">
+                        Target: {{ target }}
+                    </small>
+                {% endif %}
+            </h2>
+        </div>
+
+        <div class="card-body text-center">
+
+            {% if graph %}
+                <img
+                    src="data:image/png;base64,{{ graph }}"
+                    class="img-fluid rounded shadow"
+                    alt="Feature Importance Chart"
+                >
+            {% else %}
+                <div class="alert alert-warning">
+                    No feature importance chart is available for
+                    <strong>{{ target }}</strong>.
+                </div>
+            {% endif %}
+
+            <div class="mt-4 d-flex justify-content-center gap-3 flex-wrap">
+                <a href="{{ url_for('prediction') }}"
+                   class="btn btn-primary btn-lg">
+                    ← Back to Prediction
+                </a>
+
+                {% if target %}
+                <a href="{{ url_for('feature_importance', target=target) }}"
+                   class="btn btn-success btn-lg">
+                    🔄 Refresh Analysis
+                </a>
+                {% endif %}
+            </div>
+
+        </div>
+
+        <div class="card-footer text-center text-muted">
+            Random Forest Feature Importance
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

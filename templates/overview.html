@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <h2 class="mb-4 fw-bold">Dataset Overview</h2>
+
+    <!-- SHAPE -->
+    <div class="card shadow border-0 p-4 mb-4">
+        <h4>Dataset Shape</h4>
+        <p>
+            <b>Rows:</b> {{ shape[0] }} <br>
+            <b>Columns:</b> {{ shape[1] }}
+        </p>
+    </div>
+
+    <!-- COLUMNS -->
+    <div class="card shadow border-0 p-4 mb-4">
+        <h4>Column Names</h4>
+        <ul>
+            {% for col in columns %}
+            <li>{{ col }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- DATA TYPES -->
+    <div class="card shadow border-0 p-4 mb-4">
+        <h4>Data Types</h4>
+        <div class="table-responsive">
+            {{ types | safe }}
+        </div>
+    </div>
+
+    <!-- MISSING -->
+    <div class="card shadow border-0 p-4 mb-4">
+        <h4>Missing Values</h4>
+        <div class="table-responsive">
+            {{ missing | safe }}
+        </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="card shadow border-0 p-4 mb-4">
+        <h4>Statistics</h4>
+        <div class="table-responsive">
+            {{ stats | safe }}
+        </div>
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="card shadow border-0 p-4 mb-4">
+        <h4>Dataset Preview</h4>
+        <div class="table-responsive">
+            {{ head | safe }}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

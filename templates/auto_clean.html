@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Automatic Data Cleaning</h2>
+
+<p>The system automatically performs:</p>
+
+<ul>
+<li>Missing value handling</li>
+<li>Categorical encoding</li>
+<li>Feature scaling</li>
+</ul>
+
+<h4>Cleaned Dataset Preview</h4>
+
+<div class="table-responsive">
+{{ preview | safe }}
+</div>
+
+<br>
+
+<button class="btn btn-primary" onclick="showNulls()">
+View Null Values After Cleaning
+</button>
+
+<br><br>
+
+<div id="nullTable" style="display:none;">
+
+<h4>Remaining Null Values</h4>
+
+{{ null_values | safe }}
+
+</div>
+
+<script>
+
+function showNulls(){
+document.getElementById("nullTable").style.display="block";
+}
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">Interactive Data Visualization Dashboard</h2>
+
+    <form method="POST">
+
+        <!-- Chart Type -->
+        <div class="mb-3">
+            <label class="form-label"><strong>Chart Type</strong></label>
+            <select name="chart" class="form-control" required>
+                <option value="bar">Bar Chart</option>
+                <option value="line">Line Chart</option>
+                <option value="scatter">Scatter Plot</option>
+                <option value="hist">Histogram</option>
+                <option value="pie">Pie Chart</option>
+                <option value="heatmap">Heatmap</option>
+            </select>
+        </div>
+
+        <!-- X Axis -->
+        <div class="mb-3">
+            <label class="form-label"><strong>X-Axis</strong></label>
+            <select name="x_column" class="form-control" required>
+                {% for col in columns %}
+                    <option value="{{ col }}">{{ col }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Y Axis -->
+        <div id="y-axis-group" class="mb-3">
+            <label class="form-label"><strong>Y-Axis</strong></label>
+            <select name="y_column" class="form-control">
+                {% for col in columns %}
+                    <option value="{{ col }}">{{ col }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <hr>
+
+        <h4 class="mb-3">Optional Data Filter</h4>
+
+        <!-- Filter Column -->
+        <div class="mb-3">
+            <label class="form-label"><strong>Filter Column</strong></label>
+            <select name="filter_column" class="form-control">
+                <option value="">-- No Filter --</option>
+                {% for col in columns %}
+                    <option value="{{ col }}">{{ col }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Dynamic Filter Inputs -->
+        <div id="filter-type"></div>
+
+        <button type="submit" class="btn btn-primary btn-lg">
+            Generate Visualization
+        </button>
+
+    </form>
+
+    <hr class="my-4">
+
+    {% if graph %}
+        <div class="card shadow p-3 mb-4">
+            <h3 class="mb-3">Visualization Result</h3>
+            <img src="data:image/png;base64,{{ graph }}"
+                 class="img-fluid rounded"
+                 alt="Visualization">
+        </div>
+    {% endif %}
+
+    {% if analysis %}
+        <div class="alert alert-info shadow">
+            <h4>Analysis</h4>
+            <p class="mb-0">{{ analysis }}</p>
+        </div>
+    {% endif %}
+
+</div>
+
+<script>
+function toggleFilterInputs() {
+    const filterColumn = document.querySelector('[name="filter_column"]').value;
+    const filterContainer = document.getElementById("filter-type");
+
+    if (!filterColumn) {
+        filterContainer.innerHTML = "";
+        return;
+    }
+
+    filterContainer.innerHTML = `
+        <div class="mb-3">
+            <label class="form-label">
+                <strong>Exact Value / Text Search</strong>
+            </label>
+            <input type="text"
+                   name="filter_value"
+                   class="form-control"
+                   placeholder="Enter exact value">
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">
+                    <strong>Minimum Value</strong>
+                </label>
+                <input type="number"
+                       step="any"
+                       name="min_value"
+                       class="form-control"
+                       placeholder="Optional">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label">
+                    <strong>Maximum Value</strong>
+                </label>
+                <input type="number"
+                       step="any"
+                       name="max_value"
+                       class="form-control"
+                       placeholder="Optional">
+            </div>
+        </div>
+    `;
+}
+
+function toggleYAxis() {
+    const chartType = document.querySelector('[name="chart"]').value;
+    const yAxisGroup = document.getElementById("y-axis-group");
+
+    if (["hist", "pie", "heatmap"].includes(chartType)) {
+        yAxisGroup.style.display = "none";
+    } else {
+        yAxisGroup.style.display = "block";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    toggleFilterInputs();
+    toggleYAxis();
+
+    document.querySelector('[name="filter_column"]')
+        .addEventListener("change", toggleFilterInputs);
+
+    document.querySelector('[name="chart"]')
+        .addEventListener("change", toggleYAxis);
+});
+</script>
+
+{% endblock %}

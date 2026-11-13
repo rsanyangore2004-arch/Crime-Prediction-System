@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">Crime Prediction</h2>
+
+    <form method="POST">
+
+        <div class="mb-3">
+            <label class="form-label"><strong>Select Target Column</strong></label>
+            <select name="target"
+                    class="form-control"
+                    required
+                    onchange="this.form.submit()">
+                <option value="">-- Select Target --</option>
+
+                {% for col in columns %}
+                    <option value="{{ col }}"
+                        {% if selected_target == col %}selected{% endif %}>
+                        {{ col }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        {% if input_columns %}
+            <hr>
+
+            <h4>Enter Feature Values</h4>
+
+            {% for col in input_columns %}
+                <div class="mb-3">
+                    <label class="form-label">{{ col }}</label>
+                    <input type="number"
+                           step="any"
+                           name="{{ col }}"
+                           class="form-control"
+                           value="{{ request.form.get(col, '') }}"
+                           required>
+                </div>
+            {% endfor %}
+
+            <button type="submit"
+                    name="predict"
+                    class="btn btn-primary">
+                Predict
+            </button>
+
+            <a href="{{ url_for('prediction') }}"
+               class="btn btn-secondary">
+                Reset
+            </a>
+        {% endif %}
+
+    </form>
+
+    {% if result %}
+        <div class="alert alert-success mt-4">
+            <h4>{{ result }}</h4>
+        </div>
+    {% endif %}
+
+    {% if leaderboard %}
+        <div class="mt-5">
+            <h3>Model Leaderboard</h3>
+
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Model</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in leaderboard %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ row["model"] }}</td>
+                        <td>{{ row["score"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+
+    {% if graph %}
+        <div class="mt-5 text-center">
+            <h3>Model Comparison Chart</h3>
+            <img src="data:image/png;base64,{{ graph }}"
+                 class="img-fluid rounded shadow"
+                 alt="Model Comparison">
+        </div>
+    {% endif %}
+
+    {% if selected_target %}
+    <a href="{{ url_for('feature_importance', target=selected_target) }}"
+   class="btn btn-info mt-3">
+    View Feature Importance
+</a>
+{% endif %}
+
+</div>
+
+{% endblock %}

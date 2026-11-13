@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <!-- HEADER -->
+    <div class="mb-4">
+        <h2 class="fw-bold">Crime Data Analysis Dashboard</h2>
+        <p class="text-muted">Analyze crime patterns, clean datasets, and build predictive models.</p>
+    </div>
+
+    <!-- STATS CARDS -->
+    <div class="row mb-4">
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 p-3">
+                <h6 class="text-muted">Datasets</h6>
+                <h3>📂</h3>
+                <p>Manage data</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 p-3">
+                <h6 class="text-muted">Cleaning</h6>
+                <h3>🧹</h3>
+                <p>Preprocess data</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 p-3">
+                <h6 class="text-muted">Analytics</h6>
+                <h3>📊</h3>
+                <p>Visual insights</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 p-3">
+                <h6 class="text-muted">Machine Learning</h6>
+                <h3>🤖</h3>
+                <p>AI Predictions</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MAIN ACTION CARDS -->
+    <div class="row">
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow border-0 h-100">
+                <div class="card-body text-center">
+                    <h5>📂 Data Management</h5>
+                    <p class="text-muted">Upload & explore datasets</p>
+                    <a href="/upload" class="btn btn-warning w-100">Open</a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow border-0 h-100">
+                <div class="card-body text-center">
+                    <h5>🧹 Data Preparation</h5>
+                    <p class="text-muted">Clean and transform data</p>
+                    <a href="/manual_clean" class="btn btn-warning w-100">Open</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow border-0 h-100">
+                <div class="card-body text-center">
+                    <h5>📊 Visualization</h5>
+                    <p class="text-muted">Generate charts & insights</p>
+                    <a href="/visualization" class="btn btn-success w-100">Visualize</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card shadow border-0 h-100">
+                <div class="card-body text-center">
+                    <h5>🤖 Model Recommendation</h5>
+                    <p class="text-muted">Suitable models </p>
+                    <a href="/model_recommendation" class="btn btn-dark w-100">Open</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow border-0 h-100">
+                <div class="card-body text-center">
+                    <h5>🧠 Prediction</h5>
+                    <p class="text-muted">Predict outcomes</p>
+                    <a href="/prediction" class="btn btn-info w-100">Predict</a>
+                </div>
+            </div>
+        </div>
+       <div class="col-md-4 mb-4">
+    <div class="card shadow border-0 h-100">
+        <div class="card-body text-center">
+            <h5>📊 Crime Dashboard</h5>
+            <p class="text-muted">
+                View crime statistics, KPIs, and key insights.
+            </p>
+
+            <a href="{{ url_for('crime_dashboard') }}"
+               class="btn btn-primary mt-3">
+                Open Dashboard
+            </a>
+        </div>
+    </div>
+</div>
+</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

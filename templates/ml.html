@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Train Machine Learning Model</h2>
+
+<form method="POST">
+
+<label>Select Target Column:</label>
+<select name="target" class="form-control mb-3">
+{% for col in columns %}
+<option value="{{ col }}">{{ col }}</option>
+{% endfor %}
+</select>
+
+<label>Select Model:</label>
+<select name="model" class="form-control mb-3">
+
+<option value="logistic">Logistic Regression</option>
+<option value="rf_class">Random Forest (Classification)</option>
+
+<option value="linear">Linear Regression</option>
+<option value="rf_reg">Random Forest (Regression)</option>
+
+</select>
+
+<button class="btn btn-success">
+Train Model
+</button>
+
+</form>
+
+{% if result %}
+<hr>
+<h4>Result</h4>
+<p>{{ result }}</p>
+{% endif %}
+
+{% endblock %}

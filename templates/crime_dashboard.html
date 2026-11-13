@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="container-fluid py-4">
+    <h1 class="text-center text-light mb-4">Crime Analytics Dashboard</h1>
+
+    <!-- Summary Cards -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-3">
+            <div class="card bg-primary text-white shadow">
+                <div class="card-body text-center">
+                    <h5>Total Records</h5>
+                    <h2>{{ total_records }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-success text-white shadow">
+                <div class="card-body text-center">
+                    <h5>States Covered</h5>
+                    <h2>{{ total_states }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-warning text-dark shadow">
+                <div class="card-body text-center">
+                    <h5>Solved Cases</h5>
+                    <h2>{{ solved_cases }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-danger text-white shadow">
+                <div class="card-body text-center">
+                    <h5>Unsolved Cases</h5>
+                    <h2>{{ unsolved_cases }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Row -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-4">
+            <div class="card bg-info text-dark shadow">
+                <div class="card-body text-center">
+                    <h5>Closure Rate</h5>
+                    <h2>{{ closure_rate }}%</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-secondary text-white shadow">
+                <div class="card-body text-center">
+                    <h5>Average Victim Age</h5>
+                    <h2>{{ average_age }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-dark text-white shadow">
+                <div class="card-body text-center">
+                    <h5>Most Common Crime</h5>
+                    <h5>{{ most_common_crime }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="row g-4 mb-4">
+        <div class="col-lg-6">
+            <div class="card bg-dark text-white shadow">
+                <div class="card-header">Top Crime Types</div>
+                <div class="card-body">
+                    <canvas id="crimeChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card bg-dark text-white shadow">
+                <div class="card-header">Top States by Crime</div>
+                <div class="card-body">
+                    <canvas id="stateChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie Chart -->
+    <div class="row mb-4">
+        <div class="col-lg-6 mx-auto">
+            <div class="card bg-dark text-white shadow">
+                <div class="card-header text-center">
+                    Solved vs Unsolved Cases
+                </div>
+                <div class="card-body">
+                    <canvas id="statusChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Cases -->
+    <div class="card bg-dark text-white shadow">
+        <div class="card-header">
+            Recent Crime Records
+        </div>
+        <div class="card-body table-responsive">
+            {{ recent_cases|safe }}
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    /*
+     * VS Code cannot fully understand Jinja syntax inside JavaScript.
+     * The browser will render this correctly after Flask processes it.
+     */
+
+    const crimeLabels = JSON.parse('{{ crime_labels | tojson | safe }}');
+    const crimeValues = JSON.parse('{{ crime_values | tojson | safe }}');
+
+    const stateLabels = JSON.parse('{{ state_labels | tojson | safe }}');
+    const stateValues = JSON.parse('{{ state_values | tojson | safe }}');
+
+    const solvedCases = Number('{{ solved_cases | default(0) }}');
+    const unsolvedCases = Number('{{ unsolved_cases | default(0) }}');
+
+    // Crime Chart
+    new Chart(document.getElementById("crimeChart"), {
+        type: "bar",
+        data: {
+            labels: crimeLabels,
+            datasets: [{
+                label: "Cases",
+                data: crimeValues,
+                backgroundColor: "#0d6efd"
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // State Chart
+    new Chart(document.getElementById("stateChart"), {
+        type: "bar",
+        data: {
+            labels: stateLabels,
+            datasets: [{
+                label: "Cases",
+                data: stateValues,
+                backgroundColor: "#198754"
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Status Chart
+    new Chart(document.getElementById("statusChart"), {
+        type: "doughnut",
+        data: {
+            labels: ["Solved", "Unsolved"],
+            datasets: [{
+                data: [solvedCases, unsolvedCases],
+                backgroundColor: ["#198754", "#dc3545"]
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+});
+</script>
+
+{% endblock %}

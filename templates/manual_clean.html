@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Manual Data Cleaning</h2>
+
+{% if message %}
+<div class="alert alert-success">
+{{message}}
+</div>
+{% endif %}
+
+<form method="POST">
+
+<label>Select Column</label>
+
+<select name="column" class="form-control">
+
+{% for col in columns %}
+<option value="{{col}}">{{col}}</option>
+{% endfor %}
+
+</select>
+
+<br>
+
+<button name="action" value="drop_column" class="btn btn-danger">
+Drop Column
+</button>
+
+<button name="action" value="fill_mean" class="btn btn-primary">
+Fill Missing With Mean
+</button>
+
+<button name="action" value="fill_mode" class="btn btn-info">
+Fill Missing With Mode
+</button>
+
+<button name="action" value="drop_null_rows" class="btn btn-warning">
+Drop Rows With Nulls
+</button>
+
+</form>
+
+<hr>
+
+<h4>Dataset Preview</h4>
+
+<div class="table-responsive">
+{{preview|safe}}
+</div>
+
+{% endblock %}

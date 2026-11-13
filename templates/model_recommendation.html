@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+/* DARK MODE FIX */
+body {
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+.card {
+    background: #1e293b;
+    color: #e2e8f0;
+    border-radius: 15px;
+}
+
+.text-muted {
+    color: #94a3b8 !important;
+}
+
+.list-group-item {
+    background: transparent;
+    color: #e2e8f0;
+    border: none;
+}
+
+.badge.bg-success {
+    background-color: #22c55e !important;
+}
+
+.badge.bg-primary {
+    background-color: #3b82f6 !important;
+}
+</style>
+
+<div class="container">
+
+    <h2 class="text-center mb-4 text-light">
+        📊 Model Recommendation Dashboard
+    </h2>
+
+    <div class="row">
+
+        {% for rec in recommendations %}
+        <div class="col-md-6 mb-4">
+
+            <div class="card shadow-lg border-0 p-3">
+
+                <!-- COLUMN -->
+                <h5 class="fw-bold">
+                    📌 Target Column: {{ rec.column }}
+                </h5>
+
+                <!-- TYPE -->
+                <p>
+                    <span class="badge 
+                        {% if rec.problem_type == 'Classification' %}
+                            bg-success
+                        {% else %}
+                            bg-primary
+                        {% endif %}
+                    ">
+                        {{ rec.problem_type }}
+                    </span>
+                </p>
+
+                <!-- REASON -->
+                <p class="text-muted">
+                    {{ rec.reason }}
+                </p>
+
+                <hr>
+
+                <!-- MODELS -->
+                <h6>🤖 Recommended Models:</h6>
+
+                <ul class="list-group">
+                    {% for model in rec.recommended_models %}
+                    <li class="list-group-item">
+                        ✔ {{ model }}
+                    </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

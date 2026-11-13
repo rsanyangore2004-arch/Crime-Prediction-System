@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+
+<p><strong>Rows:</strong> {{ rows }}</p>
+<p><strong>Columns:</strong> {{ cols }}</p>
+
+<h4>Column Names</h4>
+<ul>
+{% for col in columns %}
+<li>{{ col }}</li>
+{% endfor %}
+</ul>
+
+<h4>Preview</h4>
+
+<div class="table-responsive">
+{{ preview | safe }}
+</div>
+
+{% endblock %}
