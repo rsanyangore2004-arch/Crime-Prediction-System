@@ -192,10 +192,10 @@ http://127.0.0.1:5000
 ## Application Screenshots
 
 ### Dashboard
-![Dashboard](screenshot/crime-dashboard.png.png)
+![Dashboard](screenshot/dashboard.png)
 
 ### Data Overview
-![Data Overview](screenshot/data-preparation.png.png)
+![Data Overview](screenshot/data-overview.png)
 
 ### Data Visualisation
 ![Data Visualisation](screenshot/visualization.png)
