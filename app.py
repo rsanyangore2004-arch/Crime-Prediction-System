@@ -96,12 +96,19 @@ app.config['SECRET_KEY'] = os.environ.get(
 database_url = os.environ.get('DATABASE_URL')
 
 if database_url:
-    database_url = database_url.replace(
-        'postgres://', 'postgresql://', 1
-    )
+    if database_url.startswith('postgres://'):
+        database_url = database_url.replace(
+            'postgres://', 'postgresql://', 1
+        )
+
+    if database_url.startswith('postgresql://'):
+        database_url = database_url.replace(
+            'postgresql://', 'postgresql+psycopg2://', 1
+        )
+
     app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+
 else:
-    # Use SQLite when running locally
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
